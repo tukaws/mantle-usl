@@ -59,6 +59,45 @@ along with this software (see the LICENSE.md file). If not, see
         <alias name="authBalance" entity-alias="FAA" field="amount" function="sum"/>
     </view-entity>
 
+    <view-entity entity-name="FinancialAccountAndTransSummary" package="mantle.account.financial">
+        <member-entity entity-alias="FATX" entity-name="mantle.account.financial.FinancialAccountTrans"/>
+        <member-entity entity-alias="FACT" entity-name="mantle.account.financial.FinancialAccount" join-from-alias="FATX">
+            <key-map field-name="finAccountId"/>
+        </member-entity>
+        <member-entity entity-alias="ORPTY" entity-name="mantle.party.Party" join-from-alias="FACT">
+            <key-map field-name="organizationPartyId" related="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="OWPTY" entity-name="mantle.party.Party" join-from-alias="FACT">
+            <key-map field-name="ownerPartyId" related="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="OWORG" entity-name="mantle.party.Organization" join-from-alias="FACT">
+            <key-map field-name="ownerPartyId" related="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="OWPER" entity-name="mantle.party.Person" join-from-alias="FACT">
+            <key-map field-name="ownerPartyId" related="partyId"/>
+        </member-entity>
+        <member-entity entity-alias="OHDR" entity-name="mantle.order.OrderHeader" join-from-alias="FATX">
+            <key-map field-name="orderId"/>
+        </member-entity>
+<!--         <alias-all entity-alias="FATX"/> -->
+        <alias entity-alias="FATX" name="finAccountTransId"/>
+        <alias entity-alias="FATX" name="finAccountId"/>
+        <alias entity-alias="FATX" name="reasonEnumId"/>
+        <alias entity-alias="FATX" name="minTransactionDate" field="transactionDate" function="min"/>
+        <alias entity-alias="FATX" name="maxTransactionDate" field="transactionDate" function="max"/>
+        <alias entity-alias="FATX" name="totalAmount" field="amount" function="sum"/>
+        <alias entity-alias="FACT" name="organizationPartyId"/>
+        <alias entity-alias="FACT" name="ownerPartyId"/>
+        <alias entity-alias="FACT" name="finAccountTypeId"/>
+        <alias entity-alias="ORPTY" name="pseudoId"/>
+        <alias entity-alias="ORPTY" name="partyId"/>
+        <alias entity-alias="OWORG" name="ownerOrganizationName" field="organizationName"/>
+        <alias entity-alias="OWPER" name="ownerfirstName" field="firstName"/>
+        <alias entity-alias="OWPER" name="ownerlastName" field="lastName"/>
+        <alias-all entity-alias="OHDR"/>
+
+    </view-entity>
+
     <!-- ========================================================= -->
     <!-- mantle.account.invoice -->
     <!-- ========================================================= -->
