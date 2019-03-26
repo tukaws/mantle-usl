@@ -83,6 +83,7 @@ along with this software (see the LICENSE.md file). If not, see
         <alias entity-alias="FATX" name="finAccountTransId"/>
         <alias entity-alias="FATX" name="finAccountId"/>
         <alias entity-alias="FATX" name="reasonEnumId"/>
+        <alias entity-alias="FATX" name="externalId"/>
         <alias entity-alias="FATX" name="minTransactionDate" field="transactionDate" function="min"/>
         <alias entity-alias="FATX" name="maxTransactionDate" field="transactionDate" function="max"/>
         <alias entity-alias="FATX" name="totalAmount" field="amount" function="sum"/>
